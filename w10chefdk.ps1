@@ -1,4 +1,4 @@
-#Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/w10-chefdk.ps1 -UseBasicParsing | Invoke-WebRequest
+#Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/w10-chefdk.ps1 -UseBasicParsing | Invoke-Expression
 
 Set-ExecutionPolicy Bypass
 
