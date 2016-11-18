@@ -18,7 +18,11 @@ Vagrant.configure(2) do |config|
 
     win10_config.vm.provider "virtualbox" do |v|
       v.linked_clone = true
+      v.customize ["modifyvm", :id, "--vram", "128"]
+      v.customize ["modifyvm", :id, "--accelerate3d", "on"]
     end
+
+    win10_config.vm.provision :shell,inline: $hostsfile
   end
 
   config.vm.define "lab01" do |lab01_config|
@@ -30,6 +34,8 @@ Vagrant.configure(2) do |config|
     lab01_config.vm.provider "virtualbox" do |v| 
       v.linked_clone = true   
     end
+
+    lab01_config.vm.provision :shell,inline: $hostsfile
   end
 
   config.vm.define "mysql" do |mysql_config|
