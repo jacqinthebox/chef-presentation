@@ -1,4 +1,5 @@
 #prepare the ChefDK workstation.
+#run on a clean workstation
 #Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/w10chefdk.ps1 -UseBasicParsing | Invoke-Expression
 
 Set-ExecutionPolicy Bypass
@@ -11,6 +12,10 @@ Invoke-Webrequest https://raw.githubusercontent.com/mmillar-bolis/ps-motd/master
 Install-Module Posh-Git -Force
 Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/Microsoft.PowerShell_profile.ps1 -OutFile C:\Users\vagrant\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/Microsoft.PowerShellISE_profile.ps1 -OutFile C:\Users\vagrant\Documents\WindowsPowerShell\Microsoft.PowerShellISE_profile.ps1
-choco install chefdk visualstudiocode googlechrome windowsazurepowershell conemu git -force -yes
+choco install chefdk -force -yes
+choco install visualstudiocode -force -yes
+choco install googlechrome -force -yes
+choco install windowsazurepowershell -force -yes
+choco install conemu git -force -yes
 
 
