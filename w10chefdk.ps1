@@ -8,7 +8,8 @@ New-ItemProperty -path "registry::hklm\software\policies\microsoft\Internet Expl
 Invoke-WebRequest https://chocolatey.org/install.ps1 -UseBasicParsing | Invoke-Expression
 Invoke-Webrequest https://raw.githubusercontent.com/mmillar-bolis/ps-motd/master/Get-MOTD.ps1 -outfile $env:USERPROFILE\Documents\WindowsPowerShell\Get-MOTD.ps1
 Install-Module Posh-Git -Force
-
+Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/Microsoft.PowerShell_profile.ps1 -OutFile C:\Users\vagrant\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/Microsoft.PowerShellISE_profile.ps1 -OutFile C:\Users\vagrant\Documents\WindowsPowerShell\Microsoft.PowerShellISE_profile.ps1
 choco install chefdk visualstudiocode googlechrome windowsazurepowershell conemu git -force -yes
 
 
