@@ -1,0 +1,29 @@
+#!/bin/bash
+
+CHEF_USER="cheffin" 
+CHEF_PASSWD="cheffin"
+CHEF_FULLNAME="Cheffin the Boss"
+CHEF_EMAIL="cheffin@company.co.uk"
+CHEF_COMPANY="Company, Inc"
+CHEF_PEM="$CHEF_USER.pem"
+
+
+if [ ! -d /etc/opscode ]
+then
+	  curl -L https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-server
+  fi
+
+  curl http://files.in-the-box.nl/chef-server.txt > chef-server.rb
+  sudo cp chef-server.rb /etc/opscode/
+
+  sudo chef-server-ctl reconfigure
+  sudo chef-server-ctl install chef-manage
+  sudo chef-server-ctl reconfigure
+  sudo chef-manage-ctl reconfigure
+
+  sudo chef-server-ctl install opscode-reporting
+  sudo chef-server-ctl reconfigure
+  sudo opscode-reporting-ctl reconfigure
+
+  sudo chef-server-ctl user-create $CHEF_USER $CHEF_FULLNAME $CHEF_EMAIL $CHEF_PASSWD --filename $CHEF_PEM
+  sudo chef-server-ctl org-create moonstreet "$CHEF_COMPANY" --association_user $CHEF_USER
