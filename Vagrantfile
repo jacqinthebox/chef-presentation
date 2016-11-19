@@ -41,7 +41,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "mysql01" do |mysql01_config|
     mysql01_config.vm.box_check_update = true
     mysql01_config.vm.box = "ubuntu/trusty64"
-    mysql01_config.vm.hostname = "mysql"
+    mysql01_config.vm.hostname = "mysql01"
     mysql01_config.vm.network "private_network", ip: "192.168.56.20"
 
     mysql01_config.vm.provider "virtualbox" do |prl|
