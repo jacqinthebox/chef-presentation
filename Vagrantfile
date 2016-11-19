@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
       v.customize ["modifyvm", :id, "--accelerate3d", "on"]
     end
 
-    win10_config.vm.provision :shell,inline: $hostsfile
+    win10_config.vm.provision :shell,inline: $hostfile
   end
 
   config.vm.define "app01" do |app01_config|
@@ -35,10 +35,10 @@ Vagrant.configure(2) do |config|
       v.linked_clone = true   
     end
 
-    app01_config.vm.provision :shell,inline: $hostsfile
+    app01_config.vm.provision :shell,inline: $hostfile
   end
 
-  config.vm.define "mysql01" do |mysql_config|
+  config.vm.define "mysql01" do |mysql01_config|
     mysql01_config.vm.box_check_update = true
     mysql01_config.vm.box = "ubuntu/trusty64"
     mysql01_config.vm.hostname = "mysql"
@@ -51,11 +51,10 @@ Vagrant.configure(2) do |config|
     mysql01_config.vm.provision "shell", inline: <<-SHELL
 		sudo apt-get update && sudo apt-get upgrade -y
 		apt-get install -y wget git curl 
-		echo "192.168.56.10  app01.dev.datbedrijf.nl app01 /etc/hosts
+		echo "192.168.56.10  app01.dev.datbedrijf.nl app01" >> /etc/hosts
 		echo "192.168.56.3  chefserver.dev.datbedrijf.nl chefserver" >> /etc/hosts
     SHELL
   end
-
 
   config.vm.define "chefserver" do |chefserver_config|
     chefserver_config.vm.box_check_update = true
@@ -82,4 +81,3 @@ Vagrant.configure(2) do |config|
     SHELL
   end
 end
-
