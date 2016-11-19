@@ -21,6 +21,10 @@ Vagrant.configure(2) do |config|
       v.customize ["modifyvm", :id, "--vram", "128"]
       v.customize ["modifyvm", :id, "--accelerate3d", "on"]
     end
+    
+    win10_config.vm.provider "parallels" do |p|
+      p.linked_clone = true
+    end
 
     win10_config.vm.provision :shell,inline: $hostfile
   end
@@ -35,18 +39,27 @@ Vagrant.configure(2) do |config|
       v.linked_clone = true   
     end
 
+     app01_config.vm.provider "virtualbox" do |p| 
+      p.linked_clone = true   
+    end
+
     app01_config.vm.provision :shell,inline: $hostfile
   end
 
   config.vm.define "mysql01" do |mysql01_config|
     mysql01_config.vm.box_check_update = true
-    mysql01_config.vm.box = "ubuntu/trusty64"
+    mysql01_config.vm.box = "bento/ubuntu-16.04"
     mysql01_config.vm.hostname = "mysql01"
     mysql01_config.vm.network "private_network", ip: "192.168.56.20"
 
-    mysql01_config.vm.provider "virtualbox" do |prl|
-      prl.linked_clone = true
+    mysql01_config.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
     end
+
+    mysql01_config.vm.provider "parallels" do |p|
+      p.linked_clone = true
+    end
+
 
     mysql01_config.vm.provision "shell", inline: <<-SHELL
 		sudo apt-get update && sudo apt-get upgrade -y
@@ -68,10 +81,12 @@ Vagrant.configure(2) do |config|
       v.cpus = 2
     end
 
-    chefserver_config.vm.provider "virtualbox" do |prl|
-      prl.linked_clone = true
+    chefserver_config.vm.provider "parallels" do |p|
+      p.linked_clone = true
+      p.memory = 4096
+      p.cpus = 2
     end
-
+    
     chefserver_config.vm.provision "shell", inline: <<-SHELL
 					sudo apt-get update && sudo apt-get upgrade -y
 					apt-get install -y wget git curl 
