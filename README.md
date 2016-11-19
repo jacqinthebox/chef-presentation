@@ -1,8 +1,13 @@
 # chef-presentation
 
 Install the ChefDK on a clean Windows 10 workstation
-```Powershell
-Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/w10chefdk.ps1 -UseBasicParsing | Invoke-Expression
 
+```Powershell
+iwr https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/w10chefdk.ps1 -UseBasicParsing | iex
+```
+
+Install the Chef server on Ubuntu 14.04
+```Bash
+bash <(curl -s https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/chefserver.txt)
 ```
 
