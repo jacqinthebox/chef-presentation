@@ -4,7 +4,7 @@ CHEF_USER="cheffin"
 CHEF_PASSWD="cheffin"
 CHEF_FULLNAME="Cheffin the Boss"
 CHEF_EMAIL="cheffin@company.co.uk"
-CHEF_COMPANY="Company, Inc"
+CHEF_COMPANY="AdventureWorks"
 CHEF_PEM="$CHEF_USER.pem"
 
 
