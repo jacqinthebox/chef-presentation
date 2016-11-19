@@ -12,7 +12,7 @@ HOSTFILE
 Vagrant.configure(2) do |config|
 
   config.vm.define "win10" do |win10_config|
-    win10_config.vm.box = "jacqinthebox/windows10"
+    win10_config.vm.box = "jacqinthebox/windows10LTSB"
     win10_config.vm.hostname = "win10"
     win10_config.vm.network "private_network", ip: "192.168.56.100"
 
