@@ -26,4 +26,4 @@ then
   sudo opscode-reporting-ctl reconfigure
 
   sudo chef-server-ctl user-create $CHEF_USER $CHEF_FULLNAME $CHEF_EMAIL $CHEF_PASSWD --filename $CHEF_PEM
-  sudo chef-server-ctl org-create moonstreet "$CHEF_COMPANY" --association_user $CHEF_USER
+  sudo chef-server-ctl org-create $CHEF_COMPANY "$CHEF_COMPANY Inc." --association_user $CHEF_USER
