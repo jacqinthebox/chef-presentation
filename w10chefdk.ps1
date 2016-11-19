@@ -1,4 +1,5 @@
-#Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/w10-chefdk.ps1 -UseBasicParsing | Invoke-Expression
+#prepare the ChefDK workstation.
+#Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/w10chefdk.ps1 -UseBasicParsing | Invoke-Expression
 
 Set-ExecutionPolicy Bypass
 
