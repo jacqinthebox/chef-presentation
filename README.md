@@ -5,7 +5,7 @@
 ### Download the Vagrant file and install the virtual servers with Vagrant
 
 ```
-vagrant up
+vagrant up --provider virtualbox
 ```
 
 
