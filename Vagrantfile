@@ -4,8 +4,8 @@
 $hostfile = <<HOSTFILE
 Add-Content $ENV:windir\\System32\\drivers\\etc\\hosts "192.168.56.3 `t `t chefserver.dev.datbedrijf.nl"
 Add-Content $ENV:windir\\System32\\drivers\\etc\\hosts "192.168.56.3 `t `t chefserver"
-Add-Content $ENV:windir\\System32\\drivers\\etc\\hosts "192.168.56.20 `t `t mysq01"
-Add-Content $ENV:windir\\System32\\drivers\\etc\\hosts "192.168.56.20 `t `t mysq01.dev.datbedrijf.nl"
+Add-Content $ENV:windir\\System32\\drivers\\etc\\hosts "192.168.56.20 `t `t mysql01"
+Add-Content $ENV:windir\\System32\\drivers\\etc\\hosts "192.168.56.20 `t `t mysql01.dev.datbedrijf.nl"
 netsh advfirewall set allprofiles state off
 HOSTFILE
 
@@ -25,10 +25,10 @@ Vagrant.configure(2) do |config|
     win10_config.vm.provision :shell,inline: $hostsfile
   end
 
-  config.vm.define "app01" do |lab01_config|
+  config.vm.define "app01" do |app01_config|
     app01_config.vm.box_check_update = true
     app01_config.vm.box = "jacqinthebox/windowsserver2016"
-    app01_config.vm.hostname = "lab01"
+    app01_config.vm.hostname = "app01"
     app01_config.vm.network "private_network", ip: "192.168.56.10"
 
     app01_config.vm.provider "virtualbox" do |v| 
@@ -38,21 +38,21 @@ Vagrant.configure(2) do |config|
     app01_config.vm.provision :shell,inline: $hostsfile
   end
 
-  config.vm.define "mysq01" do |mysql_config|
-    mysq01_config.vm.box_check_update = true
-    mysq01_config.vm.box = "ubuntu/trusty64"
-    mysq01_config.vm.hostname = "mysql"
-    mysq01_config.vm.network "private_network", ip: "192.168.56.20"
+  config.vm.define "mysql01" do |mysql_config|
+    mysql01_config.vm.box_check_update = true
+    mysql01_config.vm.box = "ubuntu/trusty64"
+    mysql01_config.vm.hostname = "mysql"
+    mysql01_config.vm.network "private_network", ip: "192.168.56.20"
 
-    mysq01_config.vm.provider "virtualbox" do |prl|
+    mysql01_config.vm.provider "virtualbox" do |prl|
       prl.linked_clone = true
     end
 
-    mysq01_config.vm.provision "shell", inline: <<-SHELL
+    mysql01_config.vm.provision "shell", inline: <<-SHELL
 		sudo apt-get update && sudo apt-get upgrade -y
 		apt-get install -y wget git curl 
-		echo "192.168.56.10  app01.dev.datbedrijf.nl lab01" >> /etc/hosts
-		echo "192.168.56.3  chefserver.dev.datbedrijf.nl lab02" >> /etc/hosts
+		echo "192.168.56.10  app01.dev.datbedrijf.nl app01 /etc/hosts
+		echo "192.168.56.3  chefserver.dev.datbedrijf.nl chefserver" >> /etc/hosts
     SHELL
   end
 
@@ -77,8 +77,8 @@ Vagrant.configure(2) do |config|
 					sudo apt-get update && sudo apt-get upgrade -y
 					apt-get install -y wget git curl 
 					echo "127.0.0.1 chefserver.dev.datbedrijf.nl chefserver" >> /etc/hosts
-					echo "192.168.56.10  app01.dev.datbedrijf.nl lab01" >> /etc/hosts
-					echo "192.168.56.20  mysq01.dev.datbedrijf.nl mysql" >> /etc/hosts
+					echo "192.168.56.10  app01.dev.datbedrijf.nl app01" >> /etc/hosts
+					echo "192.168.56.20  mysql01.dev.datbedrijf.nl mysql" >> /etc/hosts
     SHELL
   end
 end
