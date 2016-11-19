@@ -13,7 +13,7 @@ then
 	  curl -L https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chef-server
   fi
 
-  curl http://files.in-the-box.nl/chef-server.txt > chef-server.rb
+  curl https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/chefserver-config.txt > chef-server.rb
   sudo cp chef-server.rb /etc/opscode/
 
   sudo chef-server-ctl reconfigure

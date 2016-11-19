@@ -5,5 +5,5 @@ log_level                :info
 log_location             STDOUT
 node_name                "cheffin"
 client_key               "#{current_dir}/cheffin.pem"
-chef_server_url          "https://chefserver.dev.local/organizations/moonstreet"
+chef_server_url          "https://chefserver.dev.datbedrijf.nl/organizations/dev"
 cookbook_path            ["#{current_dir}/../cookbooks"]
