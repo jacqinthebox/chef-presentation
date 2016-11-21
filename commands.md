@@ -1,10 +1,6 @@
 download starter kit
 
-```
-chef generate repo lob-app
-cd lob-app
-```
-copy .chef folder from the starter kit to the root of this repo
+cd 
 
 ```
 knife ssl fetch
@@ -23,6 +19,6 @@ create a cookbook
 
 ```
 cd cookbooks
-chef generate cookbook all-windows
-cd all-windows
+chef generate cookbook all_windows
+cd all_windows
 ```
