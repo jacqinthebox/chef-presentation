@@ -4,7 +4,7 @@ maintainer_email 'you@example.com'
 license 'all_rights'
 description 'Installs/Configures windows_appservers'
 long_description 'Installs/Configures windows_appservers'
-version '0.11.0'
+version '0.13.0'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link

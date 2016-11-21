@@ -11,13 +11,6 @@ dsc_resource 'chef-log-files' do
   property :DestinationPath, 'c:\runlogs'
 end
 
-dsc_resource 'chef-scripts-folder' do
-  resource :File
-  property :Ensure, 'Present'
-  property :Type, 'Directory'
-  property :DestinationPath, 'c:\scripts'
-end
-
 windows_task 'chef-client' do
   user 'vagrant'
   password 'vagrant'
@@ -26,5 +19,5 @@ windows_task 'chef-client' do
   run_level :highest
   frequency :onstart 
   frequency :minute
-  frequency_modifier 5
+  frequency_modifier 30
 end

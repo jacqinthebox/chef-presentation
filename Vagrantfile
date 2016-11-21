@@ -39,7 +39,7 @@ Vagrant.configure(2) do |config|
       v.linked_clone = true   
     end
 
-     app01_config.vm.provider "virtualbox" do |p| 
+     app01_config.vm.provider "parallels" do |p| 
       p.linked_clone = true   
     end
 
