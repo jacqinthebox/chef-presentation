@@ -1,11 +1,10 @@
 # Chef presentation demo env
-
-
-
 ### Download the Vagrant file and install the virtual servers with Vagrant
+
 
 ```
 vagrant up --provider virtualbox
+vagrant up --provider parallels
 ```
 
 
@@ -16,6 +15,11 @@ iwr https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/w10c
 ```
 
 ### Install the Chef server on Ubuntu 14.04
+
+
+* Adjust chefserver.txt and chefserver-config.txt to your needs.
+
+
 ```Bash
 bash <(curl -s https://raw.githubusercontent.com/jacqinthebox/chef-presentation/master/chefserver.txt)
 ```

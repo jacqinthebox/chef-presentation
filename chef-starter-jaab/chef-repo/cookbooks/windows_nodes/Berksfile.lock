@@ -1,0 +1,10 @@
+DEPENDENCIES
+  windows (~> 2.0.2)
+  windows_nodes
+    path: .
+    metadata: true
+
+GRAPH
+  windows (2.0.2)
+  windows_nodes (0.1.0)
+    windows (>= 0.0.0)
