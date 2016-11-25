@@ -4,7 +4,7 @@
 Install Docker for Windows beta
 
 ```Powershell
-iwr https://raw.githubusercontent.com/jacqinthebox/presentations/master/20161202-dockerdemo/w10-docker-beta-install.ps1 -UseBasicParsing | iex
+iwr http://bit.ly/2fxzaOR -UseBasicParsing | iex
 ```
 
 If you run Virtualbox: it is not possible to run two hypervisors at the same time. You need to alter the bootmenu.
