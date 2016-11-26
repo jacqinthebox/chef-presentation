@@ -1,3 +1,4 @@
+*.jar
 dump*
 *.publishsettings
 # Chef
