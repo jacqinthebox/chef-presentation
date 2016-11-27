@@ -1,23 +1,23 @@
-## Install Docker and Kitematic
+### Install Docker and Kitematic
 iwr http://bit.ly/2fxzaOR -UseBasicParsing | iex
 
-## Run your first container
+#### Run your first container
 docker run --name some-nginx -d -p 8080:80 nginx
 
-## Household
+#### Household
 docker inspect
 docker ps
 docker stop #fs
 docker images
 
-### remove all containers
+*remove all containers*
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 
-### remove all images
+*remove all images*
 docker images | awk '{print $3}' | xargs docker rmi --force
 
-## create a Docker container
+### create a Docker container
 Create a file named Dockerfile
 
 ```
@@ -41,14 +41,14 @@ Next, build the image:
 docker build -t newimage .
 docker run -p 8080:80 newimage
 
-# terminal access
+*terminal access
 docker exec -i -t  romantic_varahamihira /bin/bash
 
-# sharing volumes
+sharing volumes
 
-# accessing a database
+*accessing a database
 
-# loadbalancing
+*loadbalancing
 
-# Hackathon
-# Maak een web app met een loadbalancer en zorg dat ie automatisch update als er een nieuwe versie is. 
+*Hackathon
+*Maak een web app met een loadbalancer en zorg dat ie automatisch update als er een nieuwe versie is. 
