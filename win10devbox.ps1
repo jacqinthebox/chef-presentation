@@ -1,4 +1,4 @@
-# Base Win10 development box
+# Script to bootstrap a Vagrant Win10 development box
 
 Set-ExecutionPolicy Bypass
 
