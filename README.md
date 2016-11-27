@@ -13,7 +13,7 @@ vagrant up --provider virtualbox
 ```
 ### with Parallels
 ```
-vagrant up --provider virtualbox 
+vagrant up --provider parallels
 ```
 
 (Unfortunately I do not have an Hyper-V box yet)
