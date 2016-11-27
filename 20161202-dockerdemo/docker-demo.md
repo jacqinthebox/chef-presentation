@@ -1,21 +1,32 @@
-### Install Docker and Kitematic
+### Install Docker and Kitematic on Windows 10
+
+```Powershell
 iwr http://bit.ly/2fxzaOR -UseBasicParsing | iex
+```
 
 #### Run your first container
+```
 docker run --name some-nginx -d -p 8080:80 nginx
+```
 
 #### Household
+```
 docker inspect
 docker ps
 docker stop #fs
 docker images
+```
 
-*remove all containers*
+remove all containers
+```
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
+```
 
-*remove all images*
+remove all images
+```
 docker images | awk '{print $3}' | xargs docker rmi --force
+```
 
 ### create a Docker container
 Create a file named Dockerfile
@@ -38,8 +49,10 @@ Create a folder named html and add index.html
 
 Next, build the image:
 
+```
 docker build -t newimage .
 docker run -p 8080:80 newimage
+```
 
 *terminal access
 docker exec -i -t  romantic_varahamihira /bin/bash
