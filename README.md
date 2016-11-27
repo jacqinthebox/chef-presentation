@@ -11,7 +11,7 @@ cd presentations
 ```
 vagrant up --provider virtualbox 
 ```
-### with Paralells
+### with Parallels
 ```
 vagrant up --provider virtualbox 
 ```
