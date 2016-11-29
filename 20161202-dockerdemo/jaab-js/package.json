@@ -1,0 +1,26 @@
+{
+  "name": "jaab-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "Jacqueline",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "browser-sync": "",
+    "express": "",
+    "gulp": "",
+    "gulp-concat": "*",
+    "gulp-minify-css": "*",
+    "gulp-nodemon": "",
+    "gulp-notify": "",
+    "gulp-uglify": "*",
+    "mongoose": "^4.7.0"
+  }
+}
