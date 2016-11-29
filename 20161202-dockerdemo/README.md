@@ -128,3 +128,7 @@ docker-machine active
 docker-machine list
 
 ```
+
+
+### 4. Installeer de Powershell beta in een container
+
