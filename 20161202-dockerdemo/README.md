@@ -111,14 +111,20 @@ docker run -d -p 8080:3000 eic/node-express-starter
 
 ### 2. Complex Node.js + Mongodb database
 
-### 3. Host on Azure
+Docker Compose
+
+```
 
 ```
 
 
-* node.js en mongodb
-* web api
-* jar file met lokale database
+### 3. Host on Azure
 
+```
+docker-machine create -d azure --azure-ssh-user ops --azure-subscription-id thw45kukldsd38  --azure-open-port 80 docker-platform2
 
+docker-machine.exe env --shell powershell docker-platform2 | Invoke-Expression
+docker-machine active
+docker-machine list
 
+```
