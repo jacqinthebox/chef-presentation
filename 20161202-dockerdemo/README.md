@@ -84,6 +84,37 @@ docker run -d -p 27017:27017 -v /home/jacqueline/code/jaab-js/data:/data/db mong
 
 Docker compose
 
+## Hackathon of whatever
+
+### 1. Easy Node.js app
+
+Clone de repo
+
+```
+git clone https://github.com/jacqinthebox/node-express-starter.git
+
+cd node-express-starter
+```
+
+Checkout de Dockerfile! Creeer het container image (vergeet de punt niet)
+
+```
+docker build -t eic/node-express-starter .
+```
+
+Start de container:
+
+```
+docker run -d -p 8080:3000 eic/node-express-starter
+```
+
+
+### 2. Complex Node.js + Mongodb database
+
+### 3. Host on Azure
+
+```
+
 
 * node.js en mongodb
 * web api
