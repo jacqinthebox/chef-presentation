@@ -10,14 +10,19 @@ iwr http://bit.ly/2fxzaOR -UseBasicParsing | iex
 If you run Virtualbox: it is not possible to run two hypervisors at the same time. You need to alter the bootmenu.
 https://marcofranssen.nl/switch-between-hyper-v-and-virtualbox-on-windows/   
 
+#### Pull some of these bulky images
+```
+docker pull microsoft/windowsservercore
+docker pull microsoft/mssql-server-windows-express
+docker pull microsoft/nanoserver
+```
 
-
-#### Run your first container
+### Run your first container
 ```
 docker run --name some-nginx -d -p 8080:80 nginx
 ```
 
-#### Household
+### Household
 ```
 docker inspect
 docker ps
@@ -28,10 +33,15 @@ docker images
 remove all containers
 ```
 docker rm $(docker ps -a -q)
-docker rmi $(docker images -q)
+
 ```
 
 remove all images
+```
+docker rmi $(docker images -q)
+``` 
+of
+
 ```
 docker images | awk '{print $3}' | xargs docker rmi --force
 ```
@@ -62,9 +72,10 @@ docker build -t newimage .
 docker run -p 8080:80 newimage
 ```
 
-*terminal access
+terminal access
+```
 docker exec -i -t  romantic_varahamihira /bin/bash
-
+```
 sharing volumes
 
 *accessing a database
