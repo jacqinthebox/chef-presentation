@@ -74,14 +74,20 @@ docker run -p 8080:80 newimage
 
 terminal access
 ```
-docker exec -i -t  romantic_varahamihira /bin/bash
+docker exec -i -t  /bin/bash
 ```
+
 sharing volumes
+```
+docker run -d -p 27017:27017 -v /home/jacqueline/code/jaab-js/data:/data/db mongo
+```
 
-*accessing a database
+Docker compose
 
-*loadbalancing
 
-*Hackathon
-*Maak een web app met een loadbalancer en zorg dat ie automatisch update als er een nieuwe versie is. 
+* node.js en mongodb
+* web api
+* jar file met lokale database
+
+
 
