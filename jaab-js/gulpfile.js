@@ -71,7 +71,7 @@ gulp.task('copy', ['clean'], function () {
 
 
 gulp.task('serve', ['browser-sync'], function () {
-  gulp.watch('app/src/**/*.js',   ['js', browserSync.reload]);
-  gulp.watch('app/src/**/*.css',  ['css']);
-  gulp.watch('app/src/**/*.html', ['bs-reload']);
+  gulp.watch('app/**/*.js',   ['js', browserSync.reload]);
+  gulp.watch('app/**/*.css',  ['css']);
+  gulp.watch('app/**/*.html', ['bs-reload']);
 });

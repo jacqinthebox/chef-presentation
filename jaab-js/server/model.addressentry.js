@@ -7,12 +7,14 @@ var AddressEntry = new Schema({
     required: false
   },
   
-  fullname : String,
-  searchname : String,
-  streetaddres: String,
-  postalcode: String,
-  city: String,
+  firstname : String,
+  lastname : String,
+  companyname : String,
+  departmentname : String,
+  address : String,
+  city : String,
   country: String,
+  postalcode: String,
   email: String,
   phone: String,
   www: String
