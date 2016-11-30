@@ -1,5 +1,4 @@
 data
-Dockerfile*
 # Logs
 logs
 *.log
