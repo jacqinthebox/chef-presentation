@@ -1,5 +1,6 @@
 # Docker Cheat Sheet
 
+Borrowed from: https://github.com/wsargent/docker-cheat-sheet/blob/master/README.md
 
 ## Table of Contents
 
