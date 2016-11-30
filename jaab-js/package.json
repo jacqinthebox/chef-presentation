@@ -12,15 +12,8 @@
   "author": "Jacqueline",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "browser-sync": "",
+    "body-parser": "*",
     "express": "",
-    "gulp": "",
-    "gulp-concat": "*",
-    "gulp-minify-css": "*",
-    "gulp-nodemon": "",
-    "gulp-notify": "",
-    "gulp-uglify": "*",
-    "mongoose": "^4.7.0"
+    "mongoose": "*"
   }
 }

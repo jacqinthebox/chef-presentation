@@ -10,89 +10,23 @@ iwr http://bit.ly/2fxzaOR -UseBasicParsing | iex
 If you run Virtualbox: it is not possible to run two hypervisors at the same time. You need to alter the bootmenu.
 https://marcofranssen.nl/switch-between-hyper-v-and-virtualbox-on-windows/   
 
-#### Pull some of these bulky images
+#### Pull some of these images
 ```
 docker pull microsoft/windowsservercore
 docker pull microsoft/mssql-server-windows-express
 docker pull microsoft/nanoserver
 ```
 
-### Run your first container
-```
-docker run --name some-nginx -d -p 8080:80 nginx
-```
+# Opdrachten
 
-### Household
-```
-docker inspect
-docker ps
-docker stop #fs
-docker images
-```
+## Installeer de Powershell beta in een container en mount a volume!
 
-remove all containers
-```
-docker rm $(docker ps -a -q)
 
-```
-
-remove all images
-```
-docker rmi $(docker images -q)
-``` 
-of
-
-```
-docker images | awk '{print $3}' | xargs docker rmi --force
-```
-
-### create a Docker container
-Create a file named Dockerfile
-
-```
-FROM nginx
-COPY html /usr/share/nginx/html
-```
-
-Create a folder named html and add index.html
-
-```html
-<html>
-<body>
-<h1>Hallo</h1>
-<img src="https://dl.dropboxusercontent.com/u/25670673/docker-beta.jpg" width="50%" height="50%">
-</body
-</html>
-```
-
-Next, build the image:
-
-```
-docker build -t newimage .
-docker run -p 8080:80 newimage
-```
-
-terminal access
-```
-docker exec -i -t  /bin/bash
-```
-
-sharing volumes
-```
-docker run -d -p 27017:27017 -v /home/jacqueline/code/jaab-js/data:/data/db mongo
-```
-
-Docker compose
-
-## Hackathon of whatever
-
-### 1. Easy Node.js app
+## Easy Node.js app
 
 Clone de repo
-
 ```
 git clone https://github.com/jacqinthebox/node-express-starter.git
-
 cd node-express-starter
 ```
 
@@ -108,27 +42,25 @@ Start de container:
 docker run -d -p 8080:3000 eic/node-express-starter
 ```
 
-
-### 2. Complex Node.js + Mongodb database
-
-Docker Compose
-
-```
-
-```
+Maak een nieuwe container met een eigen website. 
 
 
-### 3. Host on Azure
+## Complex Node.js + Mongodb database
+
+Met docker compose en host deze in Azure (vraag bij mij credentials en subscriptionId)
 
 ```
 docker-machine create -d azure --azure-ssh-user ops --azure-subscription-id thw45kukldsd38  --azure-open-port 80 docker-platform2
-
 docker-machine.exe env --shell powershell docker-platform2 | Invoke-Expression
 docker-machine active
 docker-machine list
-
 ```
 
+## Maak een dockerfile van de Pet Clinic 
+De PetClinic is een voorbeeldapplicatie geschreven in Java Spring.
+https://github.com/spring-projects/spring-petclinic
+(Google is je vriend)
 
-### 4. Installeer de Powershell beta in een container
-
+## Verzin zelf wat leuks
+https://blog.sixeyed.com/1-2-3-iis-running-in-nano-server-in-docker-on-windows-server-2016/
+https://blogs.msdn.microsoft.com/jcorioland/2016/10/13/getting-started-with-windows-containers/

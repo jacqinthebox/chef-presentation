@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/app'));
 
 require('./server/routes.addressentry')(app);
-mongoose.connect('mongodb://localhost:27017/jaab');
+mongoose.connect('mongodb://dbserver:27017/jaab');
 
 var address = require('./server/controller.addressentry');
 address.seed();
