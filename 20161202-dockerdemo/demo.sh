@@ -52,7 +52,7 @@ docker images
 ## Azure
 azure login
 azure account list
-docker-machine create -d azure --azure-ssh-user ops --azure-subscription-id 6b9f4039-bac1-4573-ac35-068a1073ed38  --azure-open-port 80 docker-platform3
+docker-machine create -d azure --azure-ssh-user ops --azure-subscription-id 6b9f4039-bac1-4573-ac35-068a1073ed36  --azure-open-port 80 docker-platform3
 #docker-machine.exe env --shell powershell docker-platform2 | Invoke-Expression
 docker eval "$(docker-machine env docker-platform3)"
 docker-machine active
