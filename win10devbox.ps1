@@ -14,6 +14,11 @@ Install-Module Posh-Git -Force
 Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/presentations/master/Microsoft.PowerShell_profile.ps1 -OutFile $env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 Invoke-Webrequest https://raw.githubusercontent.com/jacqinthebox/presentations/master/Microsoft.PowerShellISE_profile.ps1 -OutFile $env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShellISE_profile.ps1
 
+Install-Module ISESteroids -Scope CurrentUser
+Install-Module PsISEProjectExplorer
+Import-Module PsISEProjectExplorer
+Add-PsISEProjectExplorerToIseProfile
+
 choco install visualstudiocode -force -yes
 choco install googlechrome -force -yes
 choco install git -force -yes
