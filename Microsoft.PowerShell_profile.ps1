@@ -1,10 +1,5 @@
 . $env:USERPROFILE\Documents\WindowsPowerShell\Get-MOTD.ps1
 Get-MOTD
-write-host ""
-write-host ""
-$fc = ((Invoke-WebRequest https://gdgnoco-fortune.appspot.com/api/fortune).content) | ConvertFrom-Json
-write-host `t `"$($fc.fortune)`"
-write-host ""
 
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 Import-Module posh-git
