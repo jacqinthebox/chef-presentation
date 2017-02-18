@@ -20,8 +20,6 @@ function global:prompt {
 Pop-Location
 
 Start-SshAgent -Quiet
-
-Start-Steroids
 Import-Module PsISEProjectExplorer
-
 cd ~
+Start-Steroids
