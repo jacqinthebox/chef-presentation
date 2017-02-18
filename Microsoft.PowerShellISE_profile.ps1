@@ -21,4 +21,7 @@ Pop-Location
 
 Start-SshAgent -Quiet
 
+Start-Steroids
+Import-Module PsISEProjectExplorer
+
 cd ~
