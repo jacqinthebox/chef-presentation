@@ -16,9 +16,8 @@ vagrant up --provider virtualbox
 vagrant up --provider parallels
 ```
 
-(Unfortunately I do not have an Hyper-V box yet)
 
-## Presentation tricks
+## Presentation tricks using the terminal
 * Clean up the line: You can use Ctrl+U to clear up to the beginning.
 * Clean up the line: Ctrl+A Ctrl+K to wipe the current line in the terminal
 * Cancel the current command/line: Ctrl+C.
