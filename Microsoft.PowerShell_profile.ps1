@@ -1,5 +1,4 @@
-. $env:USERPROFILE\Documents\WindowsPowerShell\Get-MOTD.ps1
-Get-MOTD
+
 
 Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 Import-Module posh-git
