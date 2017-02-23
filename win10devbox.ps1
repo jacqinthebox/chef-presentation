@@ -4,6 +4,7 @@ Set-ExecutionPolicy Bypass
 
 New-Item -path "registry::hklm\software\policies\microsoft\Internet Explorer\Main" -Force
 New-ItemProperty -path "registry::hklm\software\policies\microsoft\Internet Explorer\Main" -Name DisableFirstRunCustomize -PropertyType dword -Value 1
+Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'HideFileExt' -Value 0
 
 Invoke-WebRequest https://chocolatey.org/install.ps1 -UseBasicParsing | Invoke-Expression
 Install-PackageProvider -Name Nuget -Force
