@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDeviceIdentity", "CreateDeviceIdentity\CreateDeviceIdentity.csproj", "{E1D228D2-AE96-4806-9413-74F716687986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadDeviceToCloudMessages", "ReadDeviceToCloudMessages\ReadDeviceToCloudMessages.csproj", "{EB1F3776-D584-460A-A6CE-64FC0B83668F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatedDevice", "SimulatedDevice\SimulatedDevice.csproj", "{25DE4996-60AD-4775-A4E3-8959A05BA867}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatedDevice2", "SimulatedDevice2\SimulatedDevice2.csproj", "{5E278C97-24F0-4E0D-84D6-A199C88B3F08}"
+EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "ARMTemplates", "ARMTemplates\ARMTemplates.deployproj", "{1C9B2E81-0125-49A8-A95D-567D6F21FEF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1D228D2-AE96-4806-9413-74F716687986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D228D2-AE96-4806-9413-74F716687986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D228D2-AE96-4806-9413-74F716687986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D228D2-AE96-4806-9413-74F716687986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB1F3776-D584-460A-A6CE-64FC0B83668F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB1F3776-D584-460A-A6CE-64FC0B83668F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB1F3776-D584-460A-A6CE-64FC0B83668F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB1F3776-D584-460A-A6CE-64FC0B83668F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25DE4996-60AD-4775-A4E3-8959A05BA867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25DE4996-60AD-4775-A4E3-8959A05BA867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25DE4996-60AD-4775-A4E3-8959A05BA867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25DE4996-60AD-4775-A4E3-8959A05BA867}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E278C97-24F0-4E0D-84D6-A199C88B3F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E278C97-24F0-4E0D-84D6-A199C88B3F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E278C97-24F0-4E0D-84D6-A199C88B3F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E278C97-24F0-4E0D-84D6-A199C88B3F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C9B2E81-0125-49A8-A95D-567D6F21FEF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9B2E81-0125-49A8-A95D-567D6F21FEF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9B2E81-0125-49A8-A95D-567D6F21FEF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9B2E81-0125-49A8-A95D-567D6F21FEF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+	EndGlobalSection
+EndGlobal
