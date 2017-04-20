@@ -4,9 +4,9 @@ Install-Module Azure
 # Login
 
 Add-AzureRmAccount -SubscriptionName "Personal MSDN Visual Studio Enterprise – MPN"
-Add-AzureRmAccount -SubscriptionId "c8de5b2d-635d-4745-9813-69dd09db573d"
+Add-AzureRmAccount -SubscriptionId "c8de5b2d-635d-4745-9813"
 
-Get-AzureRmSubscription -SubscriptionId "c8de5b2d-635d-4745-9813-69dd09db573d" | Select-AzureRmSubscription
+Get-AzureRmSubscription -SubscriptionId "c8de5b2d-635d-4745-98d" | Select-AzureRmSubscription
 
 Get-AzureRmSubscription
 Get-AzureRMResourceGroup
