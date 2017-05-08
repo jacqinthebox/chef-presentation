@@ -1,7 +1,7 @@
 ﻿param
 (
  [Parameter(Mandatory = $true)]
- [string] $HostName,
+ [string] $HostName
 )
 
 
@@ -73,11 +73,9 @@ winrm set winrm/config '@{MaxEnvelopeSizekb = "8192"}'
 Configure-WinRMHttpsListener $HostName $port
 
 Add-FirewallException -port $winrmHttpsPort
-Set-CurrentUser -UserName $Username
 
 Set-MpPreference -DisableRealtimeMonitoring $true
 Install-PackageProvider -Name Nuget -Force -Confirm:$False -RequiredVersion 2.8.5.201
-
 
 
 Set-ExecutionPolicy Bypass
