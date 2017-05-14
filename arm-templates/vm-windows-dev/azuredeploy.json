@@ -172,7 +172,7 @@
             "typeHandlerVersion": "1.4",
             "autoUpgradeMinorVersion": true,
             "settings": {
-              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file CustomScript.ps1 ',variables('hostDNSNameScriptArgument'))]",
+              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file Bootstrap.ps1 ',variables('hostDNSNameScriptArgument'))]",
               "fileUris": [
                 "https://raw.githubusercontent.com/jacqinthebox/presentations/master/arm-templates/vm-windows-dev/Bootstrap.ps1",
                 "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe",
