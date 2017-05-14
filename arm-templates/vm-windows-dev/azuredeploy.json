@@ -23,7 +23,7 @@
     },
     "myVmIsADevMachine": {
       "type": "String",
-      "defaultValue": "Yes",
+      "defaultValue": "No",
        "allowedValues": [
       "Yes",
       "No"
