@@ -3,7 +3,7 @@
  [Parameter(Mandatory = $true)]
  [string] $HostName,
  [Parameter(Mandatory = $true)]
- [string] $DevMachine = "No"
+ [string] $DevMachine
  
 )
 
