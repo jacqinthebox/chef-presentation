@@ -23,7 +23,6 @@
     },
     "myVmIsADevMachine": {
       "type": "bool",
-      "defaultValue": "true",
       "metadata": {
             "description": "If true, it installs Chocolatey, Git, Visual Studio Code and a few other niceties"
         }
