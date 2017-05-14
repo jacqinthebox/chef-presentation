@@ -20,8 +20,11 @@
     "myVmWindowsOSVersion": {
       "type": "string",
       "defaultValue": "2016-Datacenter"
+    },
+    "myVmIsDevMachine": {
+      "type": "bool",
+      "comments": "If true, Chocolatey, Visual Studio Code, Chrome, Git and so on are installed"
     }
-
   },
   "variables": {
     "myVmpipDnsName": "[parameters('myVmName')]",
