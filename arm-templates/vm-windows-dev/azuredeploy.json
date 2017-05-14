@@ -23,7 +23,10 @@
     },
     "myVmIsDevMachine": {
       "type": "bool",
-      "comments": "If true, Chocolatey, Visual Studio Code, Chrome, Git and so on are installed"
+      "defaultValue": "true"
+      "metadata": {
+            "description": "If true, it installs Chocolatey, Git, Visual Studio Code and a few other niceties"
+        }
     }
   },
   "variables": {
