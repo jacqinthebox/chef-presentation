@@ -3,7 +3,7 @@
  [Parameter(Mandatory = $true)]
  [string] $HostName,
  [Parameter(Mandatory = $False)]
- [bool] $DevMachine = $False
+ [string] $DevMachine = "No"
  
 )
 
@@ -87,7 +87,7 @@ New-Item -path "registry::hklm\software\policies\microsoft\Internet Explorer\Mai
 New-ItemProperty -path "registry::hklm\software\policies\microsoft\Internet Explorer\Main" -Name DisableFirstRunCustomize -PropertyType dword -Value 1
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'HideFileExt' -Value 0
 
-if ($DevMachine) {
+if ($DevMachine -eq "Yes") {
 Invoke-WebRequest https://chocolatey.org/install.ps1 -UseBasicParsing | Invoke-Expression
 Install-PackageProvider -Name Nuget -Force
 
