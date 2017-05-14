@@ -22,7 +22,12 @@
       "defaultValue": "2016-Datacenter"
     },
     "myVmIsADevMachine": {
-      "type": "bool",
+      "type": "String",
+      "defaultValue": "$True",
+       "allowedValues": [
+      "$True",
+      "$False"
+     ],
       "metadata": {
             "description": "If true, it installs Chocolatey, Git, Visual Studio Code and a few other niceties"
         }
