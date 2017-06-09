@@ -19,3 +19,4 @@ choco install visualstudiocode -force -yes
 choco install googlechrome -force -yes
 choco install git -force -yes
 choco install conemu -force -yes
+choco install notepadplusplus -force -yes
