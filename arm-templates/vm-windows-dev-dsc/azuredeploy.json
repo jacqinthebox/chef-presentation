@@ -22,7 +22,7 @@
         "defaultValue": "2016-Datacenter"
       },
       "myVmIsADevMachine": {
-        "type": "String",
+        "type": "string",
         "defaultValue": "No",
         "allowedValues": [
           "Yes",

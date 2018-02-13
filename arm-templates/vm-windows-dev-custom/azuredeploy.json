@@ -2,39 +2,48 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "mystorageType": {
+    "storageType": {
       "type": "string",
       "defaultValue": "Standard_LRS"
     },
-    "myVmName": {
+    "vmSize": {
+      "type": "string",
+      "defaultValue": "Standard_B2ms",
+      "allowedValues": [
+        "Standard_B2ms",
+        "Standard_B2",
+        "Standard_D2_v2"
+      ]
+    },
+    "vmName": {
       "type": "string",
       "minLength": 1
     },
-    "myVmAdminUserName": {
+    "vmAdminUsername": {
       "type": "string",
       "minLength": 1
     },
-    "myVmAdminPassword": {
+    "adminPassword": {
       "type": "securestring"
     },
-    "myVmWindowsOSVersion": {
+    "osVersion": {
       "type": "string",
       "defaultValue": "2016-Datacenter"
     },
-    "myVmIsADevMachine": {
-      "type": "String",
+    "isDevMachine": {
+      "type": "string",
       "defaultValue": "No",
-       "allowedValues": [
-      "Yes",
-      "No"
-     ],
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
       "metadata": {
-            "description": "If Yes, it installs Chocolatey, Git, Visual Studio Code and a few other niceties"
-        }
+        "description": "If Yes, it installs Chocolatey, Git, Visual Studio Code and a few other niceties"
+      }
     }
   },
   "variables": {
-    "myVmpipDnsName": "[parameters('myVmName')]",
+    "myVmpipDnsName": "[parameters('vmName')]",
     "myVm-vnetPrefix": "10.11.0.0/16",
     "myVm-vnetSubnet1Name": "servers",
     "myVm-vnetSubnet1Prefix": "10.11.1.0/24",
@@ -42,11 +51,11 @@
     "myVmImagePublisher": "MicrosoftWindowsServer",
     "myVmImageOffer": "WindowsServer",
     "myVmOSDiskName": "myVmOSDisk",
-    "myVmVmSize": "Standard_D2_v2",
+    "myVmVmSize": "[parameters('vmSize')]",
     "myVmVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'myVm-vnet')]",
     "myVmSubnetRef": "[concat(variables('myVmVnetID'), '/subnets/', variables('myVm-vnetSubnet1Name'))]",
     "myVmStorageAccountContainerName": "vhds",
-    "myVmNicName": "[concat(parameters('myVmName'), 'NetworkInterface')]",
+    "myVmNicName": "[concat(parameters('vmName'), 'NetworkInterface')]",
     "myVmpipName": "myVmpip",
     "hostDNSNameScriptArgument": "[concat('*.',resourceGroup().location,'.cloudapp.azure.com')]"
   },
@@ -82,11 +91,11 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-01-01",
       "sku": {
-        "name": "[parameters('mystorageType')]"
+        "name": "[parameters('storageType')]"
       },
       "dependsOn": [],
       "tags": {
-        "displayName": "mystorage"
+        "displayName": "storage"
       },
       "kind": "Storage"
     },
@@ -120,7 +129,7 @@
       }
     },
     {
-      "name": "[parameters('myVmName')]",
+      "name": "[parameters('vmName')]",
       "type": "Microsoft.Compute/virtualMachines",
       "location": "[resourceGroup().location]",
       "apiVersion": "2015-06-15",
@@ -136,15 +145,15 @@
           "vmSize": "[variables('myVmVmSize')]"
         },
         "osProfile": {
-          "computerName": "[parameters('myVmName')]",
-          "adminUsername": "[parameters('myVmAdminUsername')]",
-          "adminPassword": "[parameters('myVmAdminPassword')]"
+          "computerName": "[parameters('vmName')]",
+          "adminUsername": "[parameters('vmAdminUsername')]",
+          "adminPassword": "[parameters('adminPassword')]"
         },
         "storageProfile": {
           "imageReference": {
             "publisher": "[variables('myVmImagePublisher')]",
             "offer": "[variables('myVmImageOffer')]",
-            "sku": "[parameters('myVmWindowsOSVersion')]",
+            "sku": "[parameters('osVersion')]",
             "version": "latest"
           },
           "osDisk": {
@@ -171,7 +180,7 @@
           "location": "[resourceGroup().location]",
           "apiVersion": "2016-03-30",
           "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', parameters('myVmName'))]"
+            "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
           ],
           "tags": {
             "displayName": "mywinrm"
@@ -182,11 +191,9 @@
             "typeHandlerVersion": "1.4",
             "autoUpgradeMinorVersion": true,
             "settings": {
-              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file Bootstrap.ps1 ',variables('hostDNSNameScriptArgument') ,' ',parameters('myVmIsADevMachine'))]",
+              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file Bootstrap.ps1 ',variables('hostDNSNameScriptArgument') ,' ',parameters('isDevMachine'))]",
               "fileUris": [
-                "https://raw.githubusercontent.com/jacqinthebox/presentations/master/arm-templates/vm-windows-dev/Bootstrap.ps1",
-                "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe",
-                "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/winrmconf.cmd"
+                "https://raw.githubusercontent.com/jacqinthebox/presentations/master/arm-templates/vm-windows-dev/Bootstrap.ps1"
               ]
             }
           }
@@ -212,17 +219,3 @@
   ],
   "outputs": {}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
