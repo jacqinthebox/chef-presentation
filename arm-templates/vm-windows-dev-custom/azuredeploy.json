@@ -50,9 +50,9 @@
     "mystorageName": "[concat('mydisks', uniqueString(resourceGroup().id))]",
     "myVmImagePublisher": "MicrosoftWindowsServer",
     "myVmImageOffer": "WindowsServer",
-    "myVmOSDiskName": "myVmOSDisk",
+    "myVmOSDiskName": "vmOsDisk",
     "myVmVmSize": "[parameters('vmSize')]",
-    "myVmVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'myVm-vnet')]",
+    "myVmVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'vnet')]",
     "myVmSubnetRef": "[concat(variables('myVmVnetID'), '/subnets/', variables('myVm-vnetSubnet1Name'))]",
     "myVmStorageAccountContainerName": "vhds",
     "myVmNicName": "[concat(parameters('vmName'), 'NetworkInterface')]",
@@ -61,13 +61,13 @@
   },
   "resources": [
     {
-      "name": "myVm-vnet",
+      "name": "vnet",
       "type": "Microsoft.Network/virtualNetworks",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-03-30",
       "dependsOn": [],
       "tags": {
-        "displayName": "myVm-vnet"
+        "displayName": "vnet"
       },
       "properties": {
         "addressSpace": {
@@ -193,7 +193,7 @@
             "settings": {
               "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file Bootstrap.ps1 ',variables('hostDNSNameScriptArgument') ,' ',parameters('isDevMachine'))]",
               "fileUris": [
-                "https://raw.githubusercontent.com/jacqinthebox/presentations/master/arm-templates/vm-windows-dev/Bootstrap.ps1"
+                "https://raw.githubusercontent.com/jacqinthebox/presentations/master/arm-templates/vm-windows-dev-custom/Bootstrap.ps1"
               ]
             }
           }
