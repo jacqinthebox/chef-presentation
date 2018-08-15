@@ -43,20 +43,20 @@
     }
   },
   "variables": {
-    "myVmpipDnsName": "[parameters('vmName')]",
-    "myVm-vnetPrefix": "10.11.0.0/16",
-    "myVm-vnetSubnet1Name": "servers",
-    "myVm-vnetSubnet1Prefix": "10.11.1.0/24",
+    "vmpipDnsName": "[parameters('vmName')]",
+    "vnetPrefix": "10.11.0.0/16",
+    "vnetSubnet1Name": "servers",
+    "vnetSubnet1Prefix": "10.11.1.0/24",
     "mystorageName": "[concat('mydisks', uniqueString(resourceGroup().id))]",
-    "myVmImagePublisher": "MicrosoftWindowsServer",
-    "myVmImageOffer": "WindowsServer",
-    "myVmOSDiskName": "vmOsDisk",
-    "myVmVmSize": "[parameters('vmSize')]",
-    "myVmVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'vnet')]",
-    "myVmSubnetRef": "[concat(variables('myVmVnetID'), '/subnets/', variables('myVm-vnetSubnet1Name'))]",
-    "myVmStorageAccountContainerName": "vhds",
-    "myVmNicName": "[concat(parameters('vmName'), 'NetworkInterface')]",
-    "myVmpipName": "myVmpip",
+    "vmImagePublisher": "MicrosoftWindowsServer",
+    "vmImageOffer": "WindowsServer",
+    "vmOSDiskName": "vmOsDisk",
+    "vmVmSize": "[parameters('vmSize')]",
+    "vmVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'vnet')]",
+    "vmSubnetRef": "[concat(variables('vmVnetID'), '/subnets/', variables('vnetSubnet1Name'))]",
+    "vmStorageAccountContainerName": "vhds",
+    "vmNicName": "[concat(parameters('vmName'), 'NetworkInterface')]",
+    "vmpipName": "vmpip",
     "hostDNSNameScriptArgument": "[concat('*.',resourceGroup().location,'.cloudapp.azure.com')]"
   },
   "resources": [
@@ -72,14 +72,14 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[variables('myVm-vnetPrefix')]"
+            "[variables('vnetPrefix')]"
           ]
         },
         "subnets": [
           {
-            "name": "[variables('myVm-vnetSubnet1Name')]",
+            "name": "[variables('vnetSubnet1Name')]",
             "properties": {
-              "addressPrefix": "[variables('myVm-vnetSubnet1Prefix')]"
+              "addressPrefix": "[variables('vnetSubnet1Prefix')]"
             }
           }
         ]
@@ -100,16 +100,16 @@
       "kind": "Storage"
     },
     {
-      "name": "[variables('myVmNicName')]",
+      "name": "[variables('vmNicName')]",
       "type": "Microsoft.Network/networkInterfaces",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-03-30",
       "dependsOn": [
         "[resourceId('Microsoft.Network/virtualNetworks', 'vnet')]",
-        "[resourceId('Microsoft.Network/publicIPAddresses', variables('myVmpipName'))]"
+        "[resourceId('Microsoft.Network/publicIPAddresses', variables('vmpipName'))]"
       ],
       "tags": {
-        "displayName": "myVmNic"
+        "displayName": "vmNic"
       },
       "properties": {
         "ipConfigurations": [
@@ -118,10 +118,10 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
-                "id": "[variables('myVmSubnetRef')]"
+                "id": "[variables('vmSubnetRef')]"
               },
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('myVmpipName'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('vmpipName'))]"
               }
             }
           }
@@ -135,14 +135,14 @@
       "apiVersion": "2015-06-15",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts', variables('mystorageName'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces', variables('myVmNicName'))]"
+        "[resourceId('Microsoft.Network/networkInterfaces', variables('vmNicName'))]"
       ],
       "tags": {
-        "displayName": "myVm"
+        "displayName": "vm"
       },
       "properties": {
         "hardwareProfile": {
-          "vmSize": "[variables('myVmVmSize')]"
+          "vmSize": "[variables('vmVmSize')]"
         },
         "osProfile": {
           "computerName": "[parameters('vmName')]",
@@ -151,15 +151,15 @@
         },
         "storageProfile": {
           "imageReference": {
-            "publisher": "[variables('myVmImagePublisher')]",
-            "offer": "[variables('myVmImageOffer')]",
+            "publisher": "[variables('vmImagePublisher')]",
+            "offer": "[variables('vmImageOffer')]",
             "sku": "[parameters('osVersion')]",
             "version": "latest"
           },
           "osDisk": {
-            "name": "myVmOSDisk",
+            "name": "vmOSDisk",
             "vhd": {
-              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('mystorageName')), '2016-01-01').primaryEndpoints.blob, variables('myVmStorageAccountContainerName'), '/', variables('myVmOSDiskName'), '.vhd')]"
+              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('mystorageName')), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/', variables('vmOSDiskName'), '.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -168,7 +168,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('myVmNicName'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('vmNicName'))]"
             }
           ]
         }
@@ -201,18 +201,18 @@
       ]
     },
     {
-      "name": "[variables('myVmpipName')]",
+      "name": "[variables('vmpipName')]",
       "type": "Microsoft.Network/publicIPAddresses",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-03-30",
       "dependsOn": [],
       "tags": {
-        "displayName": "myVmpip"
+        "displayName": "vmpip"
       },
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "[variables('myVmpipDnsName')]"
+          "domainNameLabel": "[variables('vmpipDnsName')]"
         }
       }
     }
